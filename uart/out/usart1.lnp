@@ -1,0 +1,11 @@
+--cpu Cortex-M0
+"..\out\startup_stm32f051.o"
+"..\out\main.o"
+"..\out\sw_gpio.o"
+"..\out\sw_rcc.o"
+"..\out\sw_interrupt.o"
+"..\out\sw_uart.o"
+--strict --scatter "..\out\usart1.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\usart1.map" -o ..\out\usart1.axf
