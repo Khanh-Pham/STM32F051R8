@@ -1,0 +1,14 @@
+Dependencies for Project 'gpio', Target 'Target 1': (DO NOT MODIFY !)
+F (.\startup_stm32f051.s)(0x559CEE96)(--cpu Cortex-M0 -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F0xx--list .\startup_stm32f051.lst --xref -o ..\out\startup_stm32f051.o --depend ..\out\startup_stm32f051.d)
+F (..\src\main.c)(0x5BF5F795)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork -I..\inc-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F0xx-DSTM32F051-o ..\out\main.o --omf_browse ..\out\main.crf --depend ..\out\main.d)
+I (..\inc\hw_stm32f051r8.h)(0x5BF668B9)
+I (..\inc\hw_rcc.h)(0x5BF58B69)
+I (..\inc\hw_gpio.h)(0x5BF5F253)
+I (..\inc\sw_rcc.h)(0x5BF5E5AC)
+I (..\inc\sw_gpio.h)(0x5BF5F361)
+F (..\src\sw_rcc.c)(0x5BF5E5F8)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork -I..\inc-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F0xx-DSTM32F051-o ..\out\sw_rcc.o --omf_browse ..\out\sw_rcc.crf --depend ..\out\sw_rcc.d)
+I (..\inc\sw_rcc.h)(0x5BF5E5AC)
+I (..\inc\hw_rcc.h)(0x5BF58B69)
+F (..\src\sw_gpio.c)(0x5BF5F361)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork -I..\inc-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F0xx-DSTM32F051-o ..\out\sw_gpio.o --omf_browse ..\out\sw_gpio.crf --depend ..\out\sw_gpio.d)
+I (..\inc\sw_gpio.h)(0x5BF5F361)
+I (..\inc\hw_gpio.h)(0x5BF5F253)

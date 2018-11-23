@@ -1,0 +1,8 @@
+--cpu Cortex-M0
+".\startup_stm32f051.o"
+".\main.o"
+".\sw_rcc.o"
+--strict --scatter ".\gpio.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\gpio.map" -o .\gpio.axf
