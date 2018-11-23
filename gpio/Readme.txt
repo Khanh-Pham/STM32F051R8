@@ -1,4 +1,5 @@
 GPIO 
-Truoc khi su dung thi can phan cap clock cho ngoai vi GPIO(RCC_AHB)
-Setmode hoat dong cho pin
-set hoac reset pin can dieu khien
+Cac buoc khoi tao cho 1 chan GPIO:
+	-> enable clock trong RCC
+	-> set mode la input,output,Analog,ALT
+	-> set hoac reset cac bit tuong ung voi cac chan

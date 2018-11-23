@@ -7,3 +7,4 @@
 ..\out\main.o: ..\inc\sw_rcc.h
 ..\out\main.o: ..\inc\sw_gpio.h
 ..\out\main.o: ..\inc\sw_interrupt.h
+..\out\main.o: ..\inc\sw_uart.h

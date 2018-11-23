@@ -5,3 +5,4 @@
 ..\out\sw_uart.o: ..\inc\hw_gpio.h
 ..\out\sw_uart.o: ..\inc\hw_exti.h
 ..\out\sw_uart.o: ..\inc\hw_uart.h
+..\out\sw_uart.o: ..\inc\sw_gpio.h

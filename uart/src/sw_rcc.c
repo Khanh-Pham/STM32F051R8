@@ -46,6 +46,8 @@ void RCC_EnClkIOport(unsigned char port){
 }
 /*init Clk for USART1*/
 void RCC_Usart_init(){
-	
+	RCC_CFGR3 &= ~(0x3<<0);
+	RCC_CFGR3 |= (1<<0);// set SYSCLK for UART1(8MHz)
+	RCC_APB2ENR |=(1<<14);//enalble clock for USART1
 }
 

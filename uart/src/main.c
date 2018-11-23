@@ -2,13 +2,41 @@
 #include"sw_rcc.h"
 #include"sw_gpio.h"
 #include"sw_interrupt.h"
+#include"sw_uart.h"
+volatile unsigned int rx_data;
 void delay(unsigned int t);
 int main(){
 	RCC_HSE_init();
+	RCC_Usart_init();
+	RCC_EnClkIOport('A');
+	RCC_EnClkIOport('C');
+	Usart1_Init();
+	It_usart1();
+	GPIO_setmode('C',9,1);
 	while(1){
-		
+		GPIO_setbit('C',9);
+		delay(0xff);
+		GPIO_resetbit('C',9);
+		delay(0xff);
 	}
 	return 0;
+}
+void USART1_IRQHandler(){
+	volatile unsigned int temp;
+	temp = USART1_ISR & (1<<6);
+	/* Tx - TC flag */
+    if (0 != temp){
+		USART1_ICR |= (1<<6);
+    }
+	temp = USART1_ISR & (1<<5);
+	 /* Rx - RXNE flag */
+    if (0 != temp){
+		/*luu byte moi nhan duoc vao bien rx_data*/
+		rx_data = USART1_RDR & 0x000000FF; 
+		/* ghi giá trị 1 tới USART_RQR[RXFRQ] để xóa cờ USART_ISR[RXNE] */
+		USART1_RQR |= (1<<3);
+		Usart1_sendbyte(rx_data);
+    }
 }
 void RCC_IRQHandler(){
 	//RCC_CIR->HSERDYF(bit 3)

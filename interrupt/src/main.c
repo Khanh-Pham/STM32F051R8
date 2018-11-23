@@ -1,39 +1,80 @@
-#include "hw_stm32f051r8.h"
-#include "gpio.h"
-#include "delay.h"
-#include "interrupt.h"
+#include"hw_stm32f051r8.h"
+#include"sw_rcc.h"
+#include"sw_gpio.h"
+#include"sw_interrupt.h"
 unsigned int state = 0;
-void SystemInit(){	
+void delay(unsigned int t);
+int main(){
+	RCC_HSE_init();
+	It_init();
+	RCC_EnClkIOport('C');
+	GPIO_setmode('C',8,1);
+	GPIO_setmode('C',9,1);
+	while(1){
+		GPIO_setbit('C',8);
+		delay(0xAA);
+		GPIO_resetbit('C',8);
+		delay(0xAA);
+		}
+	return 0;
 }
 void EXTI0_1_IRQHandler(){
 	unsigned int temp;
-	temp = read_reg(EXTI_PR,(1<<0));
+	temp = EXTI_PR & (1<<0);
 	if(1==temp){
 		if(state==1){
-			BSRR_C(9,1);
+			GPIO_setbit('C',9);
 			state = 0;
 		}
 		else{
-			BSRR_C(9,0);
+			GPIO_resetbit('C',9);
 			state = 1;
 		}
 	}
 	//xóa cờ ngắt
-	write_reg(EXTI_PR,(1<<0));
-	write_reg(NVIC_ICPR,(1<<5));
+	EXTI_PR |= (1<<0);
+	NVIC_ICPR |= (1<<5);
 }
-int main(){
-	enClkPA();
-	enClkPC();
-	Init_mode_PA(0,0);
-	Init_mode_PC(8,1);
-	Init_mode_PC(9,1);
-	Init_Interrupt();
-	while(1){
-		BSRR_C(8,1);
-		delay(0xFF);
-		BSRR_C(8,0);
-		delay(0xFF);
+void RCC_IRQHandler(){
+	//RCC_CIR->HSERDYF(bit 3)
+	if((RCC_CIR & (1<<3))!=0){
+		//RCC_CIR->HSERDYC(bit 19) xoa co ngat
+		RCC_CIR |= (1<<19);
+		//chuyen doi thanh muc HSEON(bit[1:0])
+		RCC_CFGR &= ~(0x3<<0);
+		RCC_CFGR |= (0x01<<0);
 	}
-	return 0;
 }
+void delay(unsigned int t){
+	unsigned int t1, t2;
+    for (t1 = 0; t1 < t; t1++)
+    {
+        for (t2 = 0; t2 < 0xFFF; t2++)
+        {
+          __asm(" nop");
+        }
+    }
+}
+void SystemInit(){
+	RCC_CR |= 0x00000001u;
+    RCC_CFGR &= 0xF8FFB80Cu;
+  /* Reset HSEON, CSSON and PLLON bits */
+    RCC_CR &= 0xFEF6FFFFu;
+  /* Reset HSEBYP bit */
+    RCC_CR &= 0xFFFBFFFFu;
+  /* Reset PLLSRC, PLLXTPRE and PLLMUL[3:0] bits */
+  	RCC_CFGR &= 0xFFC0FFFFu;
+  /* Reset PREDIV[3:0] bits */
+    RCC_CFGR &= 0xFFFFFFF0u;
+  //   Reset USART1SW[1:0], I2C1SW, CECSW and ADCSW bits 
+    RCC_CFGR3 &= 0xFFFFFEACu;
+  /* Reset USART1SW[1:0], I2C1SW, USBSW and ADCSW bits */
+    RCC_CFGR3 &= 0xFFFFFE6Cu;
+   // Set default USB clock to PLLCLK, since there is no HSI48 
+    RCC_CFGR3 |= 0x00000080u; 
+   // /* Reset HSI14 bit */
+    RCC_CR2 &= 0xFFFFFFFEu;
+   // Disable all interrupts 
+    RCC_CIR = 0x00000000u;
+}
+

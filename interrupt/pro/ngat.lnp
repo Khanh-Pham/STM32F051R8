@@ -1,0 +1,10 @@
+--cpu Cortex-M0
+".\startup_stm32f051.o"
+".\main.o"
+".\sw_gpio.o"
+".\sw_rcc.o"
+".\sw_interrupt.o"
+--library_type=microlib --strict --scatter ".\ngat.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\ngat.map" -o .\ngat.axf
