@@ -1,6 +1,6 @@
 Dependencies for Project 'usart1', Target 'Target 1': (DO NOT MODIFY !)
 F (.\startup_stm32f051.s)(0x559CEE96)(--cpu Cortex-M0 -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F0xx--list .\startup_stm32f051.lst --xref -o ..\out\startup_stm32f051.o --depend ..\out\startup_stm32f051.d)
-F (..\src\main.c)(0x5BF825BA)(-c --cpu Cortex-M0 -g -W -O0 -Otime --apcs=interwork --split_sections -I..\inc-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F0xx-DSTM32F051-o ..\out\main.o --omf_browse ..\out\main.crf --depend ..\out\main.d)
+F (..\src\main.c)(0x5BF98265)(-c --cpu Cortex-M0 -g -W -O0 -Otime --apcs=interwork --split_sections -I..\inc-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F0xx-DSTM32F051-o ..\out\main.o --omf_browse ..\out\main.crf --depend ..\out\main.d)
 I (..\inc\hw_stm32f051r8.h)(0x5BF7575C)
 I (..\inc\hw_rcc.h)(0x5BF58B69)
 I (..\inc\hw_gpio.h)(0x5BF5F253)

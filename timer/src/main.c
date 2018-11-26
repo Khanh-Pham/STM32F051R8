@@ -2,19 +2,17 @@
 #include"sw_rcc.h"
 #include"sw_gpio.h"
 #include"sw_interrupt.h"
-void delay(unsigned int t);
+#include"sw_delay.h"
 int main(){
 	RCC_HSE_init();
+	systick_init();
 	RCC_EnClkIOport('C');
-	GPIO_setmode('C',8,1);
 	GPIO_setmode('C',9,1);
 	while(1){
-		GPIO_setbit('C',8);
-		GPIO_resetbit('C',9);
-		delay(0xAA);
-		GPIO_resetbit('C',8);
 		GPIO_setbit('C',9);
-		delay(0xAA);
+		delay_ms(500);
+		GPIO_resetbit('C',9);
+		delay_ms(500);
 		}
 	return 0;
 }
@@ -26,17 +24,8 @@ void RCC_IRQHandler(){
 		//chuyen doi thanh muc HSEON(bit[1:0])
 		RCC_CFGR &= ~(0x3<<0);
 		RCC_CFGR |= (0x01<<0);
+		__asm("cpsid i");//tat cac ngat toan cuc
 	}
-}
-void delay(unsigned int t){
-	unsigned int t1, t2;
-    for (t1 = 0; t1 < t; t1++)
-    {
-        for (t2 = 0; t2 < 0xFFF; t2++)
-        {
-          __asm(" nop");
-        }
-    }
 }
 void SystemInit(){
 	RCC_CR |= 0x00000001u;
