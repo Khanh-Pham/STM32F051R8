@@ -1,16 +1,16 @@
 USART (Universal synchronous asynchronous receiver transmitter)
 
-A. Danh s·nh nh?ng module liÍn quan:
+A. Danh s√°nh nh?ng module li√™n quan:
 - Clock (RCC):
-	-> TÌnh to·n gi· tr? clock chÌnh x·c c?p cho USART1
+	-> T√≠nh to√°ngi√° tr·ªã clock c·∫•p cho USART1
 	-> Enable clock gate cho UART module
 - GPIO:
 	-> Khoi tao mode cho chan Tx/Rx
 - USART:
 	-> kh?i t?o module.
-	-> vi?t h‡m truy?n/nh?n d? li?u
+	-> vi?t h√†m truy?n/nh?n d? li?u
 - NVIC:
-	-> kh?i t?o v‡ cho phÈp ng?t c?a USART1
+	-> kh?i t?o v√† cho ph√©p ng?t c?a USART1
 	-> interrupt handler
 
 B. USART:
@@ -25,13 +25,13 @@ B. USART:
 - Enable Tx -> USART_CR1[TE]
 - Enable Rx -> USART_CR1[RE]
 
-2. Qu· trÏnh truy?n d? li?u:
+2. Qu√° tr√¨nh truy?n d? li?u:
 - C?n ki?m tra c? USART_ISR[TXE]
-	-> N?u USART_ISR[TXE] = 1 -> ti?n h‡nh ghi d? li?u v‡o USART_TDR = <data> (luu ˝ l‡ ghi 1 byte d? li?u)
-	-> N?u USART_ISR[TXE] = 0 -> khÙng ghi d? li?u v‡o USART_TDR
+	-> N?u USART_ISR[TXE] = 1 -> ti?n h√†nh ghi d? li?u v√†o USART_TDR = <data> (luu √Ω l√† ghi 1 byte d? li?u)
+	-> N?u USART_ISR[TXE] = 0 -> kh√¥ng ghi d? li?u v√†o USART_TDR
 - Truy?n dc d? li?u
 
-3. Qu· trÏnh nh?n d? li?u:
+3. Qu√° tr√¨nh nh?n d? li?u:
 - C?n ki?m tra c? USART_ISR[RXNE]
-- N?u USART_ISR[RXNE] = 1 -> ti?n h‡nh d?c d? li?u trÍn thanh ghi USART_RDR[8:0]
-- XÛa c? ng?t USART_ISR[RXNE] b?ng vi?c d?c d? li?u tren USART_RDR ho?c ghi 1 t?i bÌt USART_RQR[RXFRQ]
+- N?u USART_ISR[RXNE] = 1 -> ti?n h√†nh d?c d? li?u tr√™n thanh ghi USART_RDR[8:0]
+- X√≥a c? ng?t USART_ISR[RXNE] b?ng vi?c d?c d? li?u tren USART_RDR ho?c ghi 1 t?i b√≠t USART_RQR[RXFRQ]
