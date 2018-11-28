@@ -1,0 +1,11 @@
+--cpu Cortex-M0
+"..\out\startup_stm32f051.o"
+"..\out\main.o"
+"..\out\sw_delay.o"
+"..\out\sw_gpio.o"
+"..\out\sw_rcc.o"
+"..\out\sw_lcd1602.o"
+--strict --scatter "..\out\lcd16x2.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\lcd16x2.map" -o ..\out\lcd16x2.axf

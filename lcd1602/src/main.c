@@ -1,18 +1,29 @@
 #include"hw_stm32f051r8.h"
 #include"sw_rcc.h"
-#include"sw_gpio.h"
-#include"sw_interrupt.h"
 #include"sw_delay.h"
+#include"sw_lcd1602.h"
+#include<stdio.h>
 int main(){
+	unsigned char value = 0;
+	char *chuoi;
 	RCC_HSE_init();
 	systick_init();
-	RCC_EnClkIOport('C');
-	GPIO_setmode('C',9,1);
+	init_pin();
+	lcd_Init();
+	lcd_Clear();
+	lcd_gotoxy(0,0);
+	lcd_puts("Toi dang buon");
+	delay_s(4);
+	lcd_gotoxy(5,1);
 	while(1){
-		GPIO_setbit('C',9);
-		delay_s(5);
-		GPIO_resetbit('C',9);
-		delay_s(5);
+		if(value<100){
+			lcd_gotoxy(5,1);
+			sprintf(chuoi,"%d",value);
+			lcd_puts(chuoi);
+			value++;
+			}
+		else value = 0;
+		delay_s(1);
 		}
 	return 0;
 }

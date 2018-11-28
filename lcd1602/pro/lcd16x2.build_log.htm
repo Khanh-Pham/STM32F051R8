@@ -1,0 +1,59 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\Github\STM32F051R8\lcd1602\pro\lcd16x2.uvproj
+Project File Date:  11/28/2018
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling startup_stm32f051.s...
+compiling main.c...
+..\inc\sw_rcc.h(7): warning:  #1295-D: Deprecated declaration RCC_HSE_init - give arg types
+  void RCC_HSE_init();
+..\inc\sw_delay.h(4): warning:  #1295-D: Deprecated declaration systick_init - give arg types
+  void systick_init();
+..\inc\sw_delay.h(6): warning:  #1295-D: Deprecated declaration get_state_systick - give arg types
+  unsigned int get_state_systick();
+..\inc\sw_delay.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\inc\sw_lcd1602.h(8): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\src\main.c(12): warning:  #111-D: statement is unreachable
+        return 0;
+..\src\main.c: 6 warnings, 0 errors
+compiling sw_delay.c...
+..\inc\sw_delay.h(4): warning:  #1295-D: Deprecated declaration systick_init - give arg types
+  void systick_init();
+..\inc\sw_delay.h(6): warning:  #1295-D: Deprecated declaration get_state_systick - give arg types
+  unsigned int get_state_systick();
+..\inc\sw_delay.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\src\sw_delay.c(41): warning:  #1-D: last line of file ends without a newline
+  }
+..\src\sw_delay.c: 4 warnings, 0 errors
+compiling sw_gpio.c...
+compiling sw_interrupt.c...
+..\inc\sw_interrupt.h(5): warning:  #1295-D: Deprecated declaration It_init - give arg types
+  void It_init();
+..\src\sw_interrupt.c: 1 warning, 0 errors
+compiling sw_rcc.c...
+..\inc\sw_rcc.h(7): warning:  #1295-D: Deprecated declaration RCC_HSE_init - give arg types
+  void RCC_HSE_init();
+..\src\sw_rcc.c: 1 warning, 0 errors
+compiling sw_lcd1602.c...
+..\src\sw_lcd1602.c(1): warning:  #1-D: last line of file ends without a newline
+  #include"sw_lcd1602.h"
+..\inc\sw_delay.h(4): warning:  #1295-D: Deprecated declaration systick_init - give arg types
+  void systick_init();
+..\inc\sw_delay.h(6): warning:  #1295-D: Deprecated declaration get_state_systick - give arg types
+  unsigned int get_state_systick();
+..\inc\sw_delay.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\inc\sw_lcd1602.h(8): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\src\sw_lcd1602.c: 5 warnings, 0 errors
+linking...
+Program Size: Code=892 RO-data=208 RW-data=0 ZI-data=1632  
+"..\out\lcd16x2.axf" - 0 Error(s), 17 Warning(s).
